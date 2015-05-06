@@ -1,0 +1,50 @@
+- The client and the collector that you can find on these subdirectories have been
+designed to execute ping measurements from several machines and push results, in
+real-time, to the server. Results are stored in the collector machine and users
+can use them while pings measurement are still running on the clients.
+- This tool has also been designed to perform pings with several flow-IDs. As RTTs
+may vary depending on the path used, pings different flow-ID independatly is
+recommended for a good precision. 
+- This tool is based atop Scamper.
+
+If you want to try this tool :
+
+1) Create a file where are indicated clients IP address as well as the IP
+addresses they must ping.
+For example :
+
+------------my_file.txt---------------
+xx.xx.xx.xx	yy.yy.yy.yy
+xx.xx.xx.xx	zz.zz.zz.zz
+aa.aa.aa.aa	bb.bb.bb.bb
+aa.aa.aa.aa	yy.yy.yy.yy
+--------------end file----------------
+
+Description :
+
+xx.xx.xx.xx will ping yy.yy.yy.yy and zz.zz.zz.zz
+aa.aa.aa.aa will ping bb.bb.bb.bb and yy.yy.yy.yy
+
+2) create a directory where the collector will store the results
+
+mkdir my_data
+
+3) Compile the client
+
+You may want to use the makefile
+
+4)
+
+Start the collector :
+python collector.py -p 6700 -i my_file.txt -d my_dir
+
+The collector will listen on port 6700. Results will be stored in the
+directory my_dir. The collector will send to each client the list of 
+destinations to ping thanks to my_file.txt.
+
+Start each client :
+./client -s ff.ff.ff.ff -p 6700 -f 16 -n 10 -w 1
+
+where ff.ff.ff.ff is the IP address of the server, 16 is the number of flow-ID,
+1 is the number of ping per frequency and per flow-ID and per second, 10 is the
+number of ping to execute before pushing results to the server.
