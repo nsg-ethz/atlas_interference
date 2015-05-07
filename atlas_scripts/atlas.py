@@ -1,7 +1,6 @@
 """
 @author: Thomas Holterbach
 @email : thomasholterbach@gmail.com
-@date: 26/06/14
 """
 
 ################################################################################

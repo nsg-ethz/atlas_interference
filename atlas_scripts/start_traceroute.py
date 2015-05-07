@@ -14,11 +14,13 @@ import argparse
 parser = argparse.ArgumentParser("Start traceroute on an Atlas probe towards random destinations\nWarning: You have to write in the script two RIPE KEYs (one for creating the measurements, another one for stoping the measurements, just in case ...")
 parser.add_argument("n", type=int, help="Number of traceroutes to start")
 parser.add_argument("id", type=int, help="ID of the Atlas probe")
+parser.add_argument("dest", type=int, help="File where are stored destinations IP addresses (one IP per line)")
 parser.add_argument("outfile", type=str, help="Outfile")
 args = parser.parse_args()
 nb_traceroutes = args.n
 probe_id = args.id
 outfile = args.outfile
+dest = args.dest
 
 # Copy past in this dictionnary your RIPE Key
 key_traceroute = {'MY KEY':'MY KEY FOR STOPPING THE MEASUREMENT'}
@@ -31,7 +33,7 @@ start_ts = int(time.time()+offset_traceroute)
 
 # Managing the destination set
 dst_list = []
-fd = open('ring_list', 'r')
+fd = open(dest, 'r')
 for line in fd.readlines():
 	dst_list.append(line.rstrip('\n'))
 fd.close()
