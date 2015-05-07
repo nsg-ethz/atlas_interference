@@ -1,15 +1,10 @@
 import sys
-import random
 import time
-
-from atlas import Measurements
-
 import requests
 import json
-import random
-
 import argparse
 
+from atlas import Measurements
 
 parser = argparse.ArgumentParser("Start ping on an Atlas probe toward a destination\nWarning: You have to write in the script two RIPE KEYs (one for creating the measurements, another one for stoping the measurements, just in case ...")
 parser.add_argument("id", type=int, help="ID of the Atlas probe")
