@@ -30,7 +30,7 @@ def error (*objs):
 def usage ():
 	print ("The collector collects ping data from clients and \
 store them in a database.\nWhen a client logon, the collector sends him a list of \
-destinations to ping .\nClients transfert ping results in warts format. The collector\
+destinations to ping .\nClients transfert ping results in warts format. The collector \
 parses them and stores RTTs and their timestamps as well as packet losses into files.\n \
 \nOptions are : \n\
  -p\t--port\t\tThe port to use\n\

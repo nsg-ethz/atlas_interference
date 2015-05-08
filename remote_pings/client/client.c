@@ -547,7 +547,7 @@ void usage(void)
 	" -f\tNumber of flow ids\n" \
 	" -n\tUpdate frequency with the collector (in number of pings, for example 10 indicates that every 10 pings results are sent to the collector).\n" \
 	" -w\tPing frequency for each flow-id (1 means 1 ping/s for each flow-id).\n" \
-	" -d\tFile containing destinations IP. Destinations IP are automaticaly sent by the server when the connexion is established.\n" \
+	" -d\tFile containing destinations IP. Destinations IP are automaticaly sent by the server when the connexion is established (optional).\n" \
 	" -b\tDebug file name (optional)\n");	
 }
 
