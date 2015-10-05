@@ -34,7 +34,7 @@ for key in key_ping:
 
     print key
     for i in range(0, 10):
-        msm = Measurements()
+        msm = Measurements(key_ping)
         msm.add_ping(description = "ping TH", interval=60, packets=2, target=destination, is_oneoff=False)
         msm.add_probes(value=probe_id)
         msm.add_start_time(start_ts+6*i)

@@ -9,7 +9,8 @@ import json
 
 class Measurements:
 
-    def __init__(self):
+    def __init__(self, ripe_key):
+        self.ripe_key = ripe_key
         self.definitions = []
         self.probes = []
         self.start_time = None
@@ -109,21 +110,21 @@ class Measurements:
         self.definitions.append(req)
 
     def add_probes(self, requested=1, probes_type="probes", value="1"):
-    
+        # For several probes, use the following format for the parameter value: "1,2,3"
+
         probe = {}
 
         # Probe properties
         probe["requested"] = requested
         probe["type"] = str(probes_type)
-        probe["value"] =  str(value)
+        probe["value"] =  value
 
         self.probes.append(probe)
 
     def get_json(self):
-    
         json_data = {}
-        json_data["definitions"] = self.definitions  # Definitions is a list of probe informations
-        json_data["probes"] = self.probes # Probes is a list of probes definitions
+        json_data["definitions"] = self.definitions
+        json_data["probes"] = self.probes
         if self.start_time != None:
             json_data["start_time"] = self.start_time
         if self.stop_time != None:
@@ -134,6 +135,6 @@ class Measurements:
     def get_curl(self):
         return 'curl -H "Content-Type: application/json" -H "Accept: \
 application/json" -X POST -d \''+json.dumps(self.get_json())+'\' \
-https://atlas.ripe.net/api/v1/measurement/?YOUR RIPE KEY HERE'
+https://atlas.ripe.net/api/v1/measurement/?key='+self.ripe_key
 
 

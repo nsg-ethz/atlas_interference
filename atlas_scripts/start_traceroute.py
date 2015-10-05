@@ -58,7 +58,7 @@ for key in key_traceroute:
     for i in range(0, 100):
         dst = get_dst()
 
-        msm = Measurements()
+        msm = Measurements(key_traceroute)
         msm.add_traceroute(description = str(nb_traceroutes)+" traceroutes", interval=60, packets=10, target=dst, is_oneoff=True, protocol="TCP")
         msm.add_probes(value=probe_id)
 
