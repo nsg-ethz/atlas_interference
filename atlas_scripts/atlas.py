@@ -134,6 +134,6 @@ class Measurements:
     def get_curl(self):
         return 'curl -H "Content-Type: application/json" -H "Accept: \
 application/json" -X POST -d \''+json.dumps(self.get_json())+'\' \
-https://atlas.ripe.net/api/v1/measurement/?key=4f93e73c-fffd-4aba-9fab-03821103260e'
+https://atlas.ripe.net/api/v1/measurement/?YOUR RIPE KEY HERE'
 
 
